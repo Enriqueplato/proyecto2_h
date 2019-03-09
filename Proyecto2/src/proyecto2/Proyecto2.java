@@ -20,6 +20,7 @@ public class Proyecto2 {
         //ventana.setSize(700, 700);
         //ventana.add(new Torre());
         ventana.setVisible(true);
+        System.out.println("probando");
     }
     
 }

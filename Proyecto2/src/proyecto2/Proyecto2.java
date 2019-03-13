@@ -17,7 +17,7 @@ public class Proyecto2 {
     public static void main(String[] args) {
         // TODO code application logic here
         TableroJuego ventana = new TableroJuego();
-        //ventana.setSize(700, 700);
+        //ventana.setSize(1050,570);
         //ventana.add(new Torre());
         ventana.setVisible(true);
         System.out.println("probando");

@@ -5,13 +5,15 @@
  */
 package proyecto2;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import javax.swing.JLabel;
 
-/**
+/** 
  *
  * @author enrique
  */
-public class TableroJuego extends javax.swing.JFrame {
+public class TableroJuego extends javax.swing.JFrame implements MouseMotionListener{
 
     JLabel[] label = new JLabel[15];
 
@@ -36,11 +38,12 @@ public class TableroJuego extends javax.swing.JFrame {
         label[11] = jLabel18;
         label[12] = jLabel19;
         label[13] = jLabel20;
-        label[14] = jLabel21;
+        label[14] = lbl15;
         
         for (int i =0;i<15;i++){
             label[i].setVisible(false);
         }
+        addMouseMotionListener(this);
         }
 
     /**
@@ -54,8 +57,6 @@ public class TableroJuego extends javax.swing.JFrame {
 
         jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -73,7 +74,9 @@ public class TableroJuego extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        lbl15 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
         fondo = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -101,35 +104,18 @@ public class TableroJuego extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LAS TORRES DE HANOI");
         setBackground(new java.awt.Color(0, 51, 51));
-        setLocation(new java.awt.Point(350, 250));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setLocation(new java.awt.Point(0, 0));
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(18, 30, 49));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel3.setBackground(new java.awt.Color(255, 0, 0));
-
-        jLabel12.setText("jLabel12");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(126, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addGap(60, 60, 60))
-        );
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 10, 200));
 
         jPanel4.setBackground(new java.awt.Color(255, 0, 0));
 
@@ -231,9 +217,32 @@ public class TableroJuego extends javax.swing.JFrame {
         jLabel20.setText("jLabel20");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 50, 10));
 
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/verde.png"))); // NOI18N
-        jLabel21.setText("jLabel21");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 30, 10));
+        lbl15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/verde.png"))); // NOI18N
+        lbl15.setText("jLabel21");
+        jPanel1.add(lbl15, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 30, 10));
+
+        jPanel3.setBackground(new java.awt.Color(255, 0, 0));
+
+        jLabel12.setText("jLabel12");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel12)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(126, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addGap(60, 60, 60))
+        );
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 10, 200));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1050, 260));
 
@@ -253,9 +262,14 @@ public class TableroJuego extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel4.setText("LAS TORRES DE HANOI");
-        fondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, -1, -1));
+        fondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         opcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
+        opcion.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                opcionItemStateChanged(evt);
+            }
+        });
         opcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionActionPerformed(evt);
@@ -312,7 +326,7 @@ public class TableroJuego extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        fondo.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 10, -1, -1));
+        fondo.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 0, -1, -1));
 
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 570));
 
@@ -340,17 +354,50 @@ public class TableroJuego extends javax.swing.JFrame {
             label[0].setVisible(true);
             label[1].setVisible(true);
             label[2].setVisible(true);
+            label[3].setVisible(false);
+            label[4].setVisible(false);
+            label[5].setVisible(false);
+            label[6].setVisible(false);
+            label[7].setVisible(false);
+            label[8].setVisible(false);
+            label[9].setVisible(false);
+            label[10].setVisible(false);
+            label[11].setVisible(false);
+            label[12].setVisible(false);
+            label[13].setVisible(false);
+            label[14].setVisible(false);
         }else if(i==1){
             label[0].setVisible(true);
             label[1].setVisible(true);
             label[2].setVisible(true);
             label[3].setVisible(true);
+            label[4].setVisible(false);
+            label[5].setVisible(false);
+            label[6].setVisible(false);
+            label[7].setVisible(false);
+            label[8].setVisible(false);
+            label[9].setVisible(false);
+            label[10].setVisible(false);
+            label[11].setVisible(false);
+            label[12].setVisible(false);
+            label[13].setVisible(false);
+            label[14].setVisible(false);
         }else if(i==2){
             label[0].setVisible(true);
             label[1].setVisible(true);
             label[2].setVisible(true);
             label[3].setVisible(true);
             label[4].setVisible(true);
+            label[5].setVisible(false);
+            label[6].setVisible(false);
+            label[7].setVisible(false);
+            label[8].setVisible(false);
+            label[9].setVisible(false);
+            label[10].setVisible(false);
+            label[11].setVisible(false);
+            label[12].setVisible(false);
+            label[13].setVisible(false);
+            label[14].setVisible(false);
         }else if(i==3){
             label[0].setVisible(true);
             label[1].setVisible(true);
@@ -358,6 +405,15 @@ public class TableroJuego extends javax.swing.JFrame {
             label[3].setVisible(true);
             label[4].setVisible(true);
             label[5].setVisible(true);
+            label[6].setVisible(false);
+            label[7].setVisible(false);
+            label[8].setVisible(false);
+            label[9].setVisible(false);
+            label[10].setVisible(false);
+            label[11].setVisible(false);
+            label[12].setVisible(false);
+            label[13].setVisible(false);
+            label[14].setVisible(false);
         }else if(i==4){
             label[0].setVisible(true);
             label[1].setVisible(true);
@@ -366,6 +422,14 @@ public class TableroJuego extends javax.swing.JFrame {
             label[4].setVisible(true);
             label[5].setVisible(true);
             label[6].setVisible(true);
+            label[7].setVisible(false);
+            label[8].setVisible(false);
+            label[9].setVisible(false);
+            label[10].setVisible(false);
+            label[11].setVisible(false);
+            label[12].setVisible(false);
+            label[13].setVisible(false);
+            label[14].setVisible(false);
         }else if(i==5){
             label[0].setVisible(true);
             label[1].setVisible(true);
@@ -375,6 +439,13 @@ public class TableroJuego extends javax.swing.JFrame {
             label[5].setVisible(true);
             label[6].setVisible(true);
             label[7].setVisible(true);
+            label[8].setVisible(false);
+            label[9].setVisible(false);
+            label[10].setVisible(false);
+            label[11].setVisible(false);
+            label[12].setVisible(false);
+            label[13].setVisible(false);
+            label[14].setVisible(false);
         }else if(i==6){
             label[0].setVisible(true);
             label[1].setVisible(true);
@@ -385,6 +456,12 @@ public class TableroJuego extends javax.swing.JFrame {
             label[6].setVisible(true);
             label[7].setVisible(true);
             label[8].setVisible(true);
+            label[9].setVisible(false);
+            label[10].setVisible(false);
+            label[11].setVisible(false);
+            label[12].setVisible(false);
+            label[13].setVisible(false);
+            label[14].setVisible(false);
         }else if(i==7){
             label[0].setVisible(true);
             label[1].setVisible(true);
@@ -396,6 +473,11 @@ public class TableroJuego extends javax.swing.JFrame {
             label[7].setVisible(true);
             label[8].setVisible(true);
             label[9].setVisible(true);
+            label[10].setVisible(false);
+            label[11].setVisible(false);
+            label[12].setVisible(false);
+            label[13].setVisible(false);
+            label[14].setVisible(false);
         }else if(i==8){
             label[0].setVisible(true);
             label[1].setVisible(true);
@@ -408,6 +490,10 @@ public class TableroJuego extends javax.swing.JFrame {
             label[8].setVisible(true);
             label[9].setVisible(true);
             label[10].setVisible(true);
+            label[11].setVisible(false);
+            label[12].setVisible(false);
+            label[13].setVisible(false);
+            label[14].setVisible(false);
         }else if(i==9){
             label[0].setVisible(true);
             label[1].setVisible(true);
@@ -421,6 +507,9 @@ public class TableroJuego extends javax.swing.JFrame {
             label[9].setVisible(true);
             label[10].setVisible(true);
             label[11].setVisible(true);
+            label[12].setVisible(false);
+            label[13].setVisible(false);
+            label[14].setVisible(false);
         }else if(i==10){
             label[0].setVisible(true);
             label[1].setVisible(true);
@@ -435,6 +524,8 @@ public class TableroJuego extends javax.swing.JFrame {
             label[10].setVisible(true);
             label[11].setVisible(true);
             label[12].setVisible(true);
+            label[13].setVisible(false);
+            label[14].setVisible(false);
         }else if(i==11){
             label[0].setVisible(true);
             label[1].setVisible(true);
@@ -450,6 +541,7 @@ public class TableroJuego extends javax.swing.JFrame {
             label[11].setVisible(true);
             label[12].setVisible(true);
             label[13].setVisible(true);
+            label[14].setVisible(false);
         }else if(i==12){
             label[0].setVisible(true);
             label[1].setVisible(true);
@@ -468,6 +560,14 @@ public class TableroJuego extends javax.swing.JFrame {
             label[14].setVisible(true);
         }
     }//GEN-LAST:event_opcionActionPerformed
+
+    private void opcionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_opcionItemStateChanged
+        System.out.println(evt.getItem());
+    }//GEN-LAST:event_opcionItemStateChanged
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        //
+    }//GEN-LAST:event_jPanel1MouseDragged
 
     /**
      * @param args the command line arguments
@@ -521,7 +621,6 @@ public class TableroJuego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -540,7 +639,24 @@ public class TableroJuego extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JButton jugar;
+    private javax.swing.JLabel lbl15;
     private javax.swing.JComboBox<String> opcion;
     private javax.swing.JButton resolver;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        if(e.getModifiersEx() == MouseEvent.BUTTON1_DOWN_MASK){
+            lbl15.setLocation(e.getPoint());
+            lbl15.repaint();
+            
+            //lbl15.setBorder(null);
+            
+        }        
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        
+    }
 }

@@ -15,12 +15,9 @@ public class Proyecto2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        TableroJuego ventana = new TableroJuego();
-        //ventana.setSize(1050,570);
-        //ventana.add(new Torre());
-        ventana.setVisible(true);
-        System.out.println("probando");
+        TableroJuego window = new TableroJuego();
+        window.setVisible(true);
+        window.setLocationRelativeTo(null);
     }
     
 }

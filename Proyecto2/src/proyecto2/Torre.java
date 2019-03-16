@@ -34,7 +34,7 @@ public class Torre extends TableroJuego implements MouseMotionListener{
     @Override
     public void mouseDragged(MouseEvent e) {
         if(e.getModifiersEx() == MouseEvent.BUTTON1_DOWN_MASK){
-            boton.setText("Ya valio");
+            boton.setText("Hola");
             boton.setLocation(e.getPoint());
             boton.repaint();
             boton.setBackground(Color.green);

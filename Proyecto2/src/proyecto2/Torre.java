@@ -5,61 +5,39 @@
  */
 package proyecto2;
 import java.awt.Color;
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
-import javax.swing.JButton;
-import proyecto2.TableroJuego;
+import java.awt.Graphics;
+import javax.swing.JPanel;
 
 /**
  *
  * @author enrique
  */
-public class Torre extends TableroJuego implements MouseMotionListener{
+public class Torre extends JPanel{
 
-    TableroJuego ventana = new TableroJuego();
-    JButton boton = new JButton();
-   
+    /**
+     * Constructor de la clase torre
+     */
     public Torre() {
-        add(boton);
-        boton.setLocation(500, 300);
-        boton.setVisible(true);
-        
-        ventana.add(boton);
-        
-        addMouseMotionListener(this);
-    }
-    
-    
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        if(e.getModifiersEx() == MouseEvent.BUTTON1_DOWN_MASK){
-            boton.setText("Hola");
-            boton.setLocation(e.getPoint());
-            boton.repaint();
-            boton.setBackground(Color.green);
-            boton.setBorder(null);
-        }
-    
+        this.setLayout(null);
     }
 
+    /**
+     * Metodo que dibuja la torre en el panel
+     * @param g 
+     */
     @Override
-    public void mouseMoved(MouseEvent e) {    
+    public void paintComponent(Graphics g) {
+
+        super.paintComponent(g);
+        this.setBackground(Color.WHITE);
+
+        g.setColor(Color.BLUE);
         
-    }
-    
-    
-    
-    /*public void torresHanoi(int discos, int torre1, int torre2, int torre3){
-        //caso base
-        if(discos == 1){
-            System.out.println("Mover disco de torre " + torre1 + "a torre" + torre3);
-        }else{
-            //dominio
-            torresHanoi(discos-1, torre1, torre3, torre2);
-            System.out.println("Mover disco de torre " + torre1 + "a torre" + torre3);
-            torresHanoi(discos-1, torre2, torre1, torre3);
-        }
+        //base
+        g.fillRect(10, 270, 200,10);
         
-    }*/
+        //asta
+        g.fillRect(110, 30, 5, 240);
+        
+    }  
 }

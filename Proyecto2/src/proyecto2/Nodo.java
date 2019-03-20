@@ -10,23 +10,23 @@ package proyecto2;
  * @author enrique
  */
 public class Nodo {
-    private Nodo siguiente;
-    private int valor;
-
-    public Nodo getSiguiente() {
-        return siguiente;
+    private Nodo sig;
+    Disco discos;
+    
+    public Nodo getSig() {
+        return sig;
     }
 
-    public void setSiguiente(Nodo siguiente) {
-        this.siguiente = siguiente;
+    public void setSig(Nodo sig) {
+        this.sig = sig;
     }
 
-    public int getValor() {
-        return valor;
+    public Disco getDiscos() {
+        return discos;
     }
 
-    public void setValor(int valor) {
-        this.valor = valor;
+    public void setDiscos(Disco discos) {
+        this.discos = discos;
     }
     
     

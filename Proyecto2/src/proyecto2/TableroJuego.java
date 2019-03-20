@@ -5,46 +5,42 @@
  */
 package proyecto2;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 /** 
  *
  * @author enrique
  */
-public class TableroJuego extends javax.swing.JFrame implements MouseMotionListener{
+public class TableroJuego extends javax.swing.JFrame{
 
-    JLabel[] label = new JLabel[15];
-
-    /**
-     * Creates new form TableroJuego
-     */
+    Tablero tablero;
+    
+    private Pila pila1 = new Pila();
+    private Pila pila2 = new Pila();
+    private Pila pila3 = new Pila();
+    
+    
     public TableroJuego() {
-        initComponents();
-        //jPanel1.setVisible(false);
-        jLabel6.setVisible(false);
-        label[0] = jLabel6;
-        label[1] = jLabel7;
-        label[2] = jLabel8;
-        label[3] = jLabel9;
-        label[4] = jLabel10;
-        label[5] = jLabel11;
-        label[6] = jLabel13;
-        label[7] = jLabel14;
-        label[8] = jLabel15;
-        label[9] = jLabel16;
-        label[10] = jLabel17;
-        label[11] = jLabel18;
-        label[12] = jLabel19;
-        label[13] = jLabel20;
-        label[14] = lbl15;
-        
-        for (int i =0;i<15;i++){
-            label[i].setVisible(false);
+        try {
+            tablero = new Tablero();
+
+            initComponents();
+            
+            this.setLocationRelativeTo(null);
+            this.setVisible(true);
+            tablero.setBounds(0, 0, 670, 555);
+            tablero.setVisible(true);
+            this.add(tablero);
+
+            
+        } catch (IOException ex) {
+            Logger.getLogger(TableroJuego.class.getName()).log(Level.SEVERE, null, ex);
         }
-        addMouseMotionListener(this);
-        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,41 +52,12 @@ public class TableroJuego extends javax.swing.JFrame implements MouseMotionListe
     private void initComponents() {
 
         jButton3 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        lbl15 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        fondo = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel4 = new javax.swing.JLabel();
-        opcion = new javax.swing.JComboBox<>();
-        resolver = new javax.swing.JButton();
-        jugar = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exit.png"))); // NOI18N
@@ -109,148 +76,10 @@ public class TableroJuego extends javax.swing.JFrame implements MouseMotionListe
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(18, 30, 49));
-        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                jPanel1MouseDragged(evt);
-            }
-        });
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel4.setBackground(new java.awt.Color(255, 0, 0));
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 11, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, -1, 200));
-
-        jPanel5.setBackground(new java.awt.Color(255, 0, 0));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 11, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 40, -1, 190));
-
-        jPanel6.setBackground(new java.awt.Color(204, 153, 0));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1040, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 20, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 1040, 20));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rojo.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 310, 10));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/amarillo.png"))); // NOI18N
-        jLabel7.setText("jLabel7");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 290, 10));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Azul.png"))); // NOI18N
-        jLabel8.setText("jLabel8");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 270, 10));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Lima.png"))); // NOI18N
-        jLabel10.setText("jLabel10");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 230, 10));
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Dorado.png"))); // NOI18N
-        jLabel9.setText("jLabel9");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 250, 10));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/blanco.png"))); // NOI18N
-        jLabel11.setText("jLabel11");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 210, 10));
-
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cafes.png"))); // NOI18N
-        jLabel13.setText("jLabel13");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 190, 10));
-
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/celeste.png"))); // NOI18N
-        jLabel14.setText("jLabel14");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 170, 10));
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/gris.png"))); // NOI18N
-        jLabel15.setText("jLabel15");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 150, 10));
-
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/morado.png"))); // NOI18N
-        jLabel16.setText("jLabel16");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 130, 10));
-
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/naranja.png"))); // NOI18N
-        jLabel17.setText("jLabel17");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 110, 10));
-
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rosado.png"))); // NOI18N
-        jLabel19.setText("jLabel19");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 70, 10));
-
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/negro.png"))); // NOI18N
-        jLabel18.setText("jLabel18");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 110, 90, 10));
-
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/turquesa.png"))); // NOI18N
-        jLabel20.setText("jLabel20");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 50, 10));
-
-        lbl15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/verde.png"))); // NOI18N
-        lbl15.setText("jLabel21");
-        jPanel1.add(lbl15, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 30, 10));
-
-        jPanel3.setBackground(new java.awt.Color(255, 0, 0));
-
-        jLabel12.setText("jLabel12");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(126, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addGap(60, 60, 60))
-        );
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 10, 200));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1050, 260));
-
-        fondo.setForeground(new java.awt.Color(51, 51, 55));
-        fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTextArea1.setBackground(new java.awt.Color(51, 51, 55));
+        jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(255, 255, 255));
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
         jTextArea1.setText("Se colocan los 10 discos en uno de los ejes, en forma \ndecreciente, con el mayor en la base. El juego consiste \nen trasladar los discos de dicho eje a cualquiera de los \ndos restantes (pudiéndose utilizar los tres ejes indistin-\ntamente a lo largo de todo el desarrollo del juego) con \nmovimientos sucesivos, pero teniendo en cuenta que \nsolamente deberá moverse un disco por vez, estando \nprohibido colocar un disco de mayor diámetro sobre \nuno de menor diametro.\nEl juego concluirá cuando la Torre de Hanoi haya sido \ntrasladada integramente.");
         jTextArea1.setBorder(null);
@@ -258,66 +87,23 @@ public class TableroJuego extends javax.swing.JFrame implements MouseMotionListe
         jTextArea1.setOpaque(false);
         jScrollPane1.setViewportView(jTextArea1);
 
-        fondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 440, 210));
-
-        jLabel4.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jLabel4.setText("LAS TORRES DE HANOI");
-        fondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
-
-        opcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15" }));
-        opcion.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                opcionItemStateChanged(evt);
-            }
-        });
-        opcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opcionActionPerformed(evt);
-            }
-        });
-        fondo.add(opcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 50, -1));
-
-        resolver.setBackground(new java.awt.Color(0, 0, 153));
-        resolver.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        resolver.setText("Resolver");
-        resolver.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        resolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resolverActionPerformed(evt);
-            }
-        });
-        fondo.add(resolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 100, 30));
-
-        jugar.setBackground(new java.awt.Color(0, 0, 153));
-        jugar.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jugar.setText("Jugar");
-        jugar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        fondo.add(jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, 90, 30));
-
-        jTextField3.setBackground(java.awt.SystemColor.window);
-        jTextField3.setBorder(null);
-        fondo.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 460, 90, -1));
-
-        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel3.setText("Torre Final");
-        fondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 460, -1, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 440, 210));
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel5.setText("Instrucciones del juego:");
-        fondo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 310, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
-        jLabel2.setText("Torre inicial");
-        fondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, -1, -1));
-
-        jTextField2.setBackground(java.awt.SystemColor.window);
-        jTextField2.setBorder(null);
-        fondo.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 90, -1));
-        fondo.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 90, 0));
+        jLabel2.setText("Min. Mov:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
         jLabel1.setText("Número discos");
-        fondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 14)); // NOI18N
+        jLabel3.setText("Torre Final");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, -1, -1));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exit.png"))); // NOI18N
         jButton4.setBorder(null);
@@ -326,16 +112,10 @@ public class TableroJuego extends javax.swing.JFrame implements MouseMotionListe
                 jButton4ActionPerformed(evt);
             }
         });
-        fondo.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 0, -1, -1));
-
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 570));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void resolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resolverActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_resolverActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -345,229 +125,6 @@ public class TableroJuego extends javax.swing.JFrame implements MouseMotionListe
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void opcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionActionPerformed
-        // TODO add your handling code here:
-        int i=opcion.getSelectedIndex();
-        //condicionales 
-        if(i==0){
-            label[0].setVisible(true);
-            label[1].setVisible(true);
-            label[2].setVisible(true);
-            label[3].setVisible(false);
-            label[4].setVisible(false);
-            label[5].setVisible(false);
-            label[6].setVisible(false);
-            label[7].setVisible(false);
-            label[8].setVisible(false);
-            label[9].setVisible(false);
-            label[10].setVisible(false);
-            label[11].setVisible(false);
-            label[12].setVisible(false);
-            label[13].setVisible(false);
-            label[14].setVisible(false);
-        }else if(i==1){
-            label[0].setVisible(true);
-            label[1].setVisible(true);
-            label[2].setVisible(true);
-            label[3].setVisible(true);
-            label[4].setVisible(false);
-            label[5].setVisible(false);
-            label[6].setVisible(false);
-            label[7].setVisible(false);
-            label[8].setVisible(false);
-            label[9].setVisible(false);
-            label[10].setVisible(false);
-            label[11].setVisible(false);
-            label[12].setVisible(false);
-            label[13].setVisible(false);
-            label[14].setVisible(false);
-        }else if(i==2){
-            label[0].setVisible(true);
-            label[1].setVisible(true);
-            label[2].setVisible(true);
-            label[3].setVisible(true);
-            label[4].setVisible(true);
-            label[5].setVisible(false);
-            label[6].setVisible(false);
-            label[7].setVisible(false);
-            label[8].setVisible(false);
-            label[9].setVisible(false);
-            label[10].setVisible(false);
-            label[11].setVisible(false);
-            label[12].setVisible(false);
-            label[13].setVisible(false);
-            label[14].setVisible(false);
-        }else if(i==3){
-            label[0].setVisible(true);
-            label[1].setVisible(true);
-            label[2].setVisible(true);
-            label[3].setVisible(true);
-            label[4].setVisible(true);
-            label[5].setVisible(true);
-            label[6].setVisible(false);
-            label[7].setVisible(false);
-            label[8].setVisible(false);
-            label[9].setVisible(false);
-            label[10].setVisible(false);
-            label[11].setVisible(false);
-            label[12].setVisible(false);
-            label[13].setVisible(false);
-            label[14].setVisible(false);
-        }else if(i==4){
-            label[0].setVisible(true);
-            label[1].setVisible(true);
-            label[2].setVisible(true);
-            label[3].setVisible(true);
-            label[4].setVisible(true);
-            label[5].setVisible(true);
-            label[6].setVisible(true);
-            label[7].setVisible(false);
-            label[8].setVisible(false);
-            label[9].setVisible(false);
-            label[10].setVisible(false);
-            label[11].setVisible(false);
-            label[12].setVisible(false);
-            label[13].setVisible(false);
-            label[14].setVisible(false);
-        }else if(i==5){
-            label[0].setVisible(true);
-            label[1].setVisible(true);
-            label[2].setVisible(true);
-            label[3].setVisible(true);
-            label[4].setVisible(true);
-            label[5].setVisible(true);
-            label[6].setVisible(true);
-            label[7].setVisible(true);
-            label[8].setVisible(false);
-            label[9].setVisible(false);
-            label[10].setVisible(false);
-            label[11].setVisible(false);
-            label[12].setVisible(false);
-            label[13].setVisible(false);
-            label[14].setVisible(false);
-        }else if(i==6){
-            label[0].setVisible(true);
-            label[1].setVisible(true);
-            label[2].setVisible(true);
-            label[3].setVisible(true);
-            label[4].setVisible(true);
-            label[5].setVisible(true);
-            label[6].setVisible(true);
-            label[7].setVisible(true);
-            label[8].setVisible(true);
-            label[9].setVisible(false);
-            label[10].setVisible(false);
-            label[11].setVisible(false);
-            label[12].setVisible(false);
-            label[13].setVisible(false);
-            label[14].setVisible(false);
-        }else if(i==7){
-            label[0].setVisible(true);
-            label[1].setVisible(true);
-            label[2].setVisible(true);
-            label[3].setVisible(true);
-            label[4].setVisible(true);
-            label[5].setVisible(true);
-            label[6].setVisible(true);
-            label[7].setVisible(true);
-            label[8].setVisible(true);
-            label[9].setVisible(true);
-            label[10].setVisible(false);
-            label[11].setVisible(false);
-            label[12].setVisible(false);
-            label[13].setVisible(false);
-            label[14].setVisible(false);
-        }else if(i==8){
-            label[0].setVisible(true);
-            label[1].setVisible(true);
-            label[2].setVisible(true);
-            label[3].setVisible(true);
-            label[4].setVisible(true);
-            label[5].setVisible(true);
-            label[6].setVisible(true);
-            label[7].setVisible(true);
-            label[8].setVisible(true);
-            label[9].setVisible(true);
-            label[10].setVisible(true);
-            label[11].setVisible(false);
-            label[12].setVisible(false);
-            label[13].setVisible(false);
-            label[14].setVisible(false);
-        }else if(i==9){
-            label[0].setVisible(true);
-            label[1].setVisible(true);
-            label[2].setVisible(true);
-            label[3].setVisible(true);
-            label[4].setVisible(true);
-            label[5].setVisible(true);
-            label[6].setVisible(true);
-            label[7].setVisible(true);
-            label[8].setVisible(true);
-            label[9].setVisible(true);
-            label[10].setVisible(true);
-            label[11].setVisible(true);
-            label[12].setVisible(false);
-            label[13].setVisible(false);
-            label[14].setVisible(false);
-        }else if(i==10){
-            label[0].setVisible(true);
-            label[1].setVisible(true);
-            label[2].setVisible(true);
-            label[3].setVisible(true);
-            label[4].setVisible(true);
-            label[5].setVisible(true);
-            label[6].setVisible(true);
-            label[7].setVisible(true);
-            label[8].setVisible(true);
-            label[9].setVisible(true);
-            label[10].setVisible(true);
-            label[11].setVisible(true);
-            label[12].setVisible(true);
-            label[13].setVisible(false);
-            label[14].setVisible(false);
-        }else if(i==11){
-            label[0].setVisible(true);
-            label[1].setVisible(true);
-            label[2].setVisible(true);
-            label[3].setVisible(true);
-            label[4].setVisible(true);
-            label[5].setVisible(true);
-            label[6].setVisible(true);
-            label[7].setVisible(true);
-            label[8].setVisible(true);
-            label[9].setVisible(true);
-            label[10].setVisible(true);
-            label[11].setVisible(true);
-            label[12].setVisible(true);
-            label[13].setVisible(true);
-            label[14].setVisible(false);
-        }else if(i==12){
-            label[0].setVisible(true);
-            label[1].setVisible(true);
-            label[2].setVisible(true);
-            label[3].setVisible(true);
-            label[4].setVisible(true);
-            label[5].setVisible(true);
-            label[6].setVisible(true);
-            label[7].setVisible(true);
-            label[8].setVisible(true);
-            label[9].setVisible(true);
-            label[10].setVisible(true);
-            label[11].setVisible(true);
-            label[12].setVisible(true);
-            label[13].setVisible(true);
-            label[14].setVisible(true);
-        }
-    }//GEN-LAST:event_opcionActionPerformed
-
-    private void opcionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_opcionItemStateChanged
-        System.out.println(evt.getItem());
-    }//GEN-LAST:event_opcionItemStateChanged
-
-    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
-        //
-    }//GEN-LAST:event_jPanel1MouseDragged
 
     /**
      * @param args the command line arguments
@@ -605,58 +162,15 @@ public class TableroJuego extends javax.swing.JFrame implements MouseMotionListe
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel fondo;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JButton jugar;
-    private javax.swing.JLabel lbl15;
-    private javax.swing.JComboBox<String> opcion;
-    private javax.swing.JButton resolver;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        if(e.getModifiersEx() == MouseEvent.BUTTON1_DOWN_MASK){
-            lbl15.setLocation(e.getPoint());
-            lbl15.repaint();
-            
-            //lbl15.setBorder(null);
-            
-        }        
-    }
 
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        
-    }
 }

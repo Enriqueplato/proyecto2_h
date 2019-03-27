@@ -8,9 +8,6 @@ package proyecto2;
 import java.awt.Color;
 import java.util.Random;
 import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -18,7 +15,7 @@ import javax.swing.border.TitledBorder;
  */
 public class Disco extends JPanel{
     
-    public Disco() {
+    public Disco(int x, int y, int ancho, int alto) {
         Random rand = new Random();
 
         //tres colores bases
@@ -27,11 +24,8 @@ public class Disco extends JPanel{
         float b = rand.nextFloat();
         
         Color colorAnillo = new Color(r, g, b);
-         //Línea 1
-        Border bordejpanel = new TitledBorder(new BevelBorder(2));
-
-        //Línea 2
-        this.setBorder(bordejpanel); 
+        
         this.setBackground(colorAnillo);
+        this.setBounds(x, y, ancho, alto);
     }    
 }

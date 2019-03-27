@@ -12,6 +12,7 @@ package proyecto2;
 public class Nodo {
     private Nodo sig;
     Disco discos;
+    private int tam;
     
     public Nodo getSig() {
         return sig;
@@ -27,6 +28,14 @@ public class Nodo {
 
     public void setDiscos(Disco discos) {
         this.discos = discos;
+    }
+
+    public int getTam() {
+        return tam;
+    }
+
+    public void setTam(int tam) {
+        this.tam = tam;
     }
     
     

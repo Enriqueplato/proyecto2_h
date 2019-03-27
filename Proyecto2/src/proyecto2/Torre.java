@@ -14,17 +14,10 @@ import javax.swing.JPanel;
  */
 public class Torre extends JPanel{
 
-    /**
-     * Constructor de la clase torre
-     */
     public Torre() {
         this.setLayout(null);
     }
 
-    /**
-     * Metodo que dibuja la torre en el panel
-     * @param g 
-     */
     @Override
     public void paintComponent(Graphics g) {
 

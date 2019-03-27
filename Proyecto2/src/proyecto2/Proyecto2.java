@@ -17,36 +17,25 @@ public class Proyecto2 implements Serializable{
 
     
     String cadena;
-    ArrayList<String> cadenas;
     //guarda el numero de pasos completos
     int contador;
 
     Proyecto2() {
         cadena = "";
-        cadenas= new ArrayList<>();
         contador=0;
     }
 
     
     public void hanoi(int num, int inicio, int auxiliar, int fin) throws IOException {
         if (num == 1) {
-            //cadena = "Mover de la torre " + inicio + " a la torre " + fin;
+            System.out.println("Mover de torre "+ inicio+ " a la torre"+ fin);
             contador++;
-            //cadenas.add(cadena);
-            
         } else {
             hanoi(num - 1, inicio, fin, auxiliar);
-            //cadena = "Mover de la torre " + inicio + " a la torre " + fin;
+            System.out.println("Mover de torre "+ inicio+ " a la torre"+ fin);
             contador++;
-            //cadenas.add(cadena);
-            
             hanoi(num - 1, auxiliar, inicio, fin);
         }
-    }
-   
-    public boolean verificarFinalJuego(int n, int numeroArosTorre3){
-        
-        return n==numeroArosTorre3;
     }
 
 
